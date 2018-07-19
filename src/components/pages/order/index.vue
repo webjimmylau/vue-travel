@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="order">
     order page
   </div>
 </template>
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-
+  .order{
+    
+  }
 </style>

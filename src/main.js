@@ -6,8 +6,9 @@ import router from './router'
 
 import fastClick from 'fastclick'
 
-import './assets/styles/reset.scss' // 将所有html标签的默认样式统一化
-import './assets/styles/border.scss' // 为解决不同的像素密度，1px在各种设备下表现不同的问题
+import 'styles/reset.css' // 将所有html标签的默认样式统一化
+import 'styles/border.css' // 为解决不同的像素密度，1px在各种设备下表现不同的问题
+import 'styles/iconfont.css' // iconfong图标
 
 fastClick.attach(document.body) // 为消除移动端浏览器，从物理触摸到触发点击事件之间的300ms延时的问题
 

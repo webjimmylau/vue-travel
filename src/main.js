@@ -4,13 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import fastClick from 'fastclick'
+import fastClick from 'fastclick' // 为消除移动端浏览器，从物理触摸到触发点击事件之间的300ms延时的问题
+import VueAwesomeSwiper from 'vue-awesome-swiper' // 轮播插件
 
 import 'styles/reset.css' // 将所有html标签的默认样式统一化
 import 'styles/border.css' // 为解决不同的像素密度，1px在各种设备下表现不同的问题
 import 'styles/iconfont.css' // iconfong图标
+import 'swiper/dist/css/swiper.css'
 
-fastClick.attach(document.body) // 为消除移动端浏览器，从物理触摸到触发点击事件之间的300ms延时的问题
+fastClick.attach(document.body)
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 Vue.config.productionTip = false
 

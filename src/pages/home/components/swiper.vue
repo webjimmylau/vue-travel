@@ -22,6 +22,18 @@ export default {
                 {
                     id: '00002',
                     imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1807/c6/44fce1467be17702.jpg_750x200_406f5fc3.jpg'
+                },
+                {
+                    id: '00003',
+                    imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1805/3b/ef86879aa50e3002.jpg_750x200_2a108508.jpg'
+                },
+                {
+                    id: '00004',
+                    imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1708/7c/c0b9acba07764302.jpg_750x200_389436b7.jpg'
+                },
+                {
+                    id: '00005',
+                    imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1806/3c/c72a1ccd4d7b2202.jpg_750x200_b88bbab4.jpg'
                 }
             ],
             swiperOption: {
@@ -35,13 +47,16 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@import '~styles/varibles.styl'
 .swiper
-    height: 2rem;
-    background #eee;
+    height: 0
+    padding-bottom: 26.67%
+    background $boColorGray
+    overflow: hidden
     .swiper-img
-        width: 100%;
+        width: 100%
     & >>> .swiper-pagination-bullet-active
-        background: white;
+        background: white
 </style>
 
 

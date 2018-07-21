@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper">
+  <div class="banner">
     <swiper :options="swiperOption">
       <swiper-slide v-for="item in swiperList" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl">
@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'HomeSwiper',
+    name: 'Banner',
     data() {
       return {
         swiperList: [
@@ -48,10 +48,10 @@
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
-  .swiper
+  .banner
     height: 0
     padding-bottom: 26.67%
-    background $boColorGray
+    background $bgColorGray
     overflow: hidden
     .swiper-img
       width: 100%

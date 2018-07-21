@@ -16,6 +16,7 @@
 
 <script>
   export default {
+    name: 'Icons',
     data() {
       return {
         iconList: [
@@ -95,37 +96,26 @@
   @import '~styles/varibles.styl'
   .icons
     & >>> .swiper-container
-      height: 0
-      padding-bottom: 50%
-      overflow: hidden
+      padding-bottom: .36rem
     & >>> .swiper-pagination-bullet
       width: 20px
       height: 3px
       border-radius: 0
+  .icons
+    background: #fff
     .icon-item
       position: relative
       float: left
       width: 25%
-      height: 0
-      padding-bottom: 22%
+      padding .2rem 0
       .icon-img
-        position: absolute
-        top: 0
-        right: 0
-        bottom: 0.54rem
-        left: 0
         text-align: center
         img
           box-sizing: border-box
-          padding-top: .18rem
-          height: 100%
+          width: 1rem
+          height: 1rem
       .icon-name
-        position: absolute
-        right: 0
-        bottom: 0
-        left: 0
-        height: 0.54rem
-        line-height: 0.54rem
+        padding-top .1rem
         text-align: center
         ellipsis()
 </style>

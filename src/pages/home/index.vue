@@ -7,17 +7,17 @@
 </template>
 
 <script>
-import HomeHeader from './components/header'
-import HomeSwiper from './components/swiper'
-import HomeIcons from './components/icons'
+  import HomeHeader from './components/header'
+  import HomeSwiper from './components/swiper'
+  import HomeIcons from './components/icons'
 
-export default {
-  components: {
-    HomeHeader,
-    HomeSwiper,
-    HomeIcons,
+  export default {
+    components: {
+      HomeHeader,
+      HomeSwiper,
+      HomeIcons,
+    }
   }
-}
 </script>
 
 <style lang="stylus" scoped>

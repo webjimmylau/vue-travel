@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
-    <swiper :options="swiperOption">
-      <swiper-slide v-for="item in swiperList" :key="item.id">
+    <swiper :options="swiperOption" v-if="hasBanner">
+      <swiper-slide v-for="item in list" :key="item.id">
         <img class="swiper-img" :src="item.imgUrl">
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
@@ -12,35 +12,21 @@
 <script>
   export default {
     name: 'Banner',
+    props: {
+      list: Array
+    },
     data() {
       return {
-        swiperList: [
-          {
-            id: '00001',
-            imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1807/66/e5a5cec881702f02.jpg_750x200_67bb5691.jpg'
-          },
-          {
-            id: '00002',
-            imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1807/c6/44fce1467be17702.jpg_750x200_406f5fc3.jpg'
-          },
-          {
-            id: '00003',
-            imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1805/3b/ef86879aa50e3002.jpg_750x200_2a108508.jpg'
-          },
-          {
-            id: '00004',
-            imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1708/7c/c0b9acba07764302.jpg_750x200_389436b7.jpg'
-          },
-          {
-            id: '00005',
-            imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1806/3c/c72a1ccd4d7b2202.jpg_750x200_b88bbab4.jpg'
-          }
-        ],
         swiperOption: {
           pagination: '.swiper-pagination',
           autoplay: 5000,
           loop: true,
         }
+      }
+    },
+    computed: {
+      hasBanner(){
+        return this.list && this.list.length;
       }
     }
   }
@@ -50,7 +36,7 @@
   @import '~styles/varibles.styl'
   .banner
     height: 0
-    padding-bottom: 26.67%
+    padding-bottom: 31.25%
     background $bgColorGray
     overflow: hidden
     .swiper-img

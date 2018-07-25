@@ -17,60 +17,11 @@
 <script>
   export default {
     name: 'Icons',
+    props: {
+      list: Array
+    },
     data() {
       return {
-        iconList: [
-          {
-            id: "00001",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png",
-            desc: '景点门票'
-          },
-          {
-            id: "00002",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png",
-            desc: '游乐场'
-          },
-          {
-            id: "00003",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/8c/47630407f70e8302.png",
-            desc: '国艺影视城'
-          },
-          {
-            id: "00004",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png",
-            desc: '温泉'
-          },
-          {
-            id: "00005",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/3e/86314b2af03b7502.png",
-            desc: '水上乐园'
-          },
-          {
-            id: "00006",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/50/26ffa31b56646402.png",
-            desc: '亲子游'
-          },
-          {
-            id: "00007",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
-            desc: '一日游'
-          },
-          {
-            id: "00008",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/b1/528a9e80403b8c02.png",
-            desc: '玩转长隆'
-          },
-          {
-            id: "00009",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/96/c70f1e85ae4a4f02.png",
-            desc: '自然风光'
-          },
-          {
-            id: "00010",
-            imgUrl: "https://imgs.qunarzz.com/piao/fusion/1803/80/416c6ab3368d1f02.png",
-            desc: '全部玩乐'
-          }
-        ],
         swiperOption: {
           pagination: '.swiper-pagination',
         }
@@ -79,7 +30,7 @@
     computed: {
       iconPages() {
         let pages = [];
-        this.iconList.forEach((item, index) => {
+        this.list.forEach((item, index) => {
           let page = Math.floor(index / 8);
           if (!pages[page]) {
             pages[page] = [];

@@ -1,14 +1,16 @@
 <template>
   <div class="home">
-    <home-head></home-head>
-    <home-banner></home-banner>
-    <home-icons></home-icons>
-    <home-recommend :list="recommendList" title="热门推荐"></home-recommend>
-    <home-weekend :list="weekendList" title="周末去哪儿"></home-weekend>
+    <home-head :city="city"></home-head>
+    <home-banner :list="bannerList"></home-banner>
+    <home-icons :list="iconsList"></home-icons>
+    <home-recommend title="热门推荐" :list="recommendList"></home-recommend>
+    <home-weekend title="周末去哪儿" :list="weekendList"></home-weekend>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
+
   import HomeHead from './components/head'
   import HomeBanner from './components/banner'
   import HomeIcons from './components/icons'
@@ -17,62 +19,41 @@
 
   export default {
     name: 'Home',
+    data(){
+      return {
+        city: '',
+        bannerList: [],
+        iconsList: [],
+        recommendList: [],
+        weekendList: []
+      }
+    },
+    methods: {
+      getDataInfo(){
+        axios.get('/api/index.json')
+          .then(this.getDataInfoSucc)
+      },
+      getDataInfoSucc(res){
+        const resData = res.data;
+        if(resData.ret && resData.data){
+          const data = resData.data;
+          this.city = data.city;
+          this.bannerList = data.bannerList;
+          this.iconsList = data.iconList;
+          this.recommendList = data.recommendList;
+          this.weekendList = data.weekendList;
+        }
+      }
+    },
+    mounted() {
+      this.getDataInfo();
+    },
     components: {
       HomeHead,
       HomeBanner,
       HomeIcons,
       HomeRecommend,
       HomeWeekend,
-    },
-    data(){
-      return {
-        recommendList: [
-          {
-            id: '00001',
-            imgUrl: 'https://imgs.qunarzz.com/sight/p0/1607/6c/6ce376cd5775ce6fb4.img.jpg_200x200_7ed7ce79.jpg',
-            name: '九道谷漂流',
-            comment: '23',
-            price: 120,
-            address: '九道谷',
-          },
-          {
-            id: '00002',
-            imgUrl: 'https://imgs.qunarzz.com/sight/p0/1707/fd/fd38ff549c0ee891a3.img.jpg_200x200_52e7f8b4.jpg',
-            name: '佛山游得酷水上乐园',
-            comment: '186',
-            price: 160,
-            address: '顺德区',
-          },
-          {
-            id: '00003',
-            imgUrl: 'https://imgs.qunarzz.com/sight/p0/1708/67/67b574e957302bb2a3.water.jpg_200x200_c4d09d8d.jpg',
-            name: '西樵平沙岛水上乐园',
-            comment: '37',
-            price: 100,
-            address: '南海平沙',
-          }
-        ],
-        weekendList: [
-          {
-            id: '00001',
-            imgUrl: 'http://img1.qunarzz.com/sight/source/1505/92/580e9ea4f37a1b.jpg_r_640x214_72112761.jpg',
-            name: '广州必游TOP10',
-            desc: '走进佛山河网密布，生态优美的岭南水乡',
-          },
-          {
-            id: '00002',
-            imgUrl: 'https://imgs.qunarzz.com/sight/source/1602/88/bf120edeaea383.jpg_r_640x214_f8591f7b.jpg',
-            name: '欢乐长隆',
-            desc: '世界欢乐汇聚长隆',
-          },
-          {
-            id: '00003',
-            imgUrl: 'https://imgs.qunarzz.com/sight/source/1511/f7/90c1c5f6f3dd59.jpg_r_640x214_3cb4974e.jpg',
-            name: '河源必游TOP10',
-            desc: '走进客家古邑，感受万绿河源',
-          }
-        ]
-      }
     }
   }
 </script>

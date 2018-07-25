@@ -1,8 +1,8 @@
 <template>
-  <div class="recommend" v-if="list && list.length">
-    <div class="recommend-title" v-show="title">{{title}}</div>
+  <div class="recommend" v-if="hasWeekend">
+    <div class="recommend-title" v-if="title">{{title}}</div>
     <div class="recommend-cont">
-      <div class="recommend-item" v-for="item in recommendList" :key="item.id">
+      <div class="recommend-item" v-for="item in list" :key="item.id">
         <div class="recommend-img">
           <img :src="item.imgUrl">
         </div>
@@ -22,10 +22,13 @@
 <script>
   export default {
     name: "Weekend",
-    props: ['title', 'list'],
-    data(){
-      return {
-        recommendList: this.list
+    props: {
+      title: String,
+      list: Array
+    },
+    computed: {
+      hasWeekend(){
+        return this.list && this.list.length;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" v-if="hasIcons">
       <swiper-slide v-for="(page, i) in iconPages" :key="i">
         <div class="icon-item" v-for="item in page" :key="item.id">
           <div class="icon-img">
@@ -28,6 +28,9 @@
       }
     },
     computed: {
+      hasIcons(){
+        return this.list.length;
+      },
       iconPages() {
         let pages = [];
         this.list.forEach((item, index) => {

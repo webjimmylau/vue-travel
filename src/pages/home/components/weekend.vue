@@ -28,7 +28,7 @@
     },
     computed: {
       hasWeekend(){
-        return this.list && this.list.length;
+        return this.list.length;
       }
     }
   }

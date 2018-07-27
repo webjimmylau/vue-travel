@@ -21,7 +21,6 @@
 
 <script>
   export default {
-    name: "Weekend",
     props: {
       title: String,
       list: Array

@@ -18,7 +18,6 @@
   import HomeWeekend from './components/weekend'
 
   export default {
-    name: 'Home',
     data(){
       return {
         city: '',

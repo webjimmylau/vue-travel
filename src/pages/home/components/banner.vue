@@ -11,7 +11,6 @@
 
 <script>
   export default {
-    name: 'Banner',
     props: {
       list: Array
     },

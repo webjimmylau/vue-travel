@@ -26,7 +26,6 @@
 
 <script>
   export default {
-    name: "recommend",
     props: {
       title: String,
       list: Array

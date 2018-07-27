@@ -16,7 +16,6 @@
 
 <script>
   export default {
-    name: 'Icons',
     props: {
       list: Array
     },

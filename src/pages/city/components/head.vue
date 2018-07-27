@@ -18,6 +18,7 @@
     height: $headHeight
     line-height: $headHeight
     text-align center
+    font-size: .36rem
     color: #fff
     background: $bgColor
     .back-icon

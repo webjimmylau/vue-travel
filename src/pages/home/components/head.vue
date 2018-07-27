@@ -16,7 +16,6 @@
 
 <script>
   export default {
-    name: 'Head',
     props: {
       city: String
     }

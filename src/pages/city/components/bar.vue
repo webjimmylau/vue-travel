@@ -2,7 +2,8 @@
   <div class="bar">
     <div
       class="item"
-      v-for="(item, key, index) in cities">{{key}}</div>
+      v-for="(item, key, index) in cities"
+      @click="handleClickLetter">{{key}}</div>
   </div>
 </template>
 
@@ -10,6 +11,12 @@
   export default {
     props: {
       cities: Object
+    },
+    methods: {
+      handleClickLetter(e){
+        const letter = e.target.innerText;
+        this.$emit('change', letter);
+      }
     }
   }
 </script>

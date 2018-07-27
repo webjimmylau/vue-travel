@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 
 import axios from 'axios'
+import BScroll from 'better-scroll'
+
 import fastClick from 'fastclick' // 为消除移动端浏览器，从物理触摸到触发点击事件之间的300ms延时的问题
 import VueAwesomeSwiper from 'vue-awesome-swiper' // 轮播插件
 
@@ -15,7 +17,8 @@ import 'swiper/dist/css/swiper.css'
 
 fastClick.attach(document.body)
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
-Vue.prototype.$ajax = axios
+Vue.prototype.$ajax = axios // $ajax调用接口
+Vue.prototype.$scroll = BScroll // 滚动
 
 Vue.config.productionTip = false
 

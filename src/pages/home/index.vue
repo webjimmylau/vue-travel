@@ -9,8 +9,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
-
   import HomeHead from './components/head'
   import HomeBanner from './components/banner'
   import HomeIcons from './components/icons'
@@ -29,7 +27,7 @@
     },
     methods: {
       getDataInfo(){
-        axios.get('/api/index.json')
+        this.$ajax.get('/api/index.json')
           .then(this.getDataInfoSucc)
       },
       getDataInfoSucc(res){

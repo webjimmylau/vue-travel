@@ -1,22 +1,17 @@
 <template>
   <div class="bar">
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
-    <div class="item">A</div>
+    <div
+      class="item"
+      v-for="(item, key, index) in cities">{{key}}</div>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: {
+      cities: Object
+    }
+  }
 </script>
 
 <style lang="stylus" scoped>
@@ -33,5 +28,5 @@
     text-align: center;
     color: $bgColor
     .item
-      line-height: .4rem
+      line-height: .36rem
 </style>

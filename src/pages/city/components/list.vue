@@ -68,18 +68,18 @@
     &:before
       border-bottom-color: #ddd
   .list
-    position: absolute;
-    top: 1.6rem;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
+    position: absolute
+    top: 1.6rem
+    right: 0
+    bottom: 0
+    left: 0
+    overflow: hidden
     .area
       .area-title
         padding-left .2rem
         line-height .6rem
         color: #666
-        background: #f8f8f8
+        background: $bgColorGray
       .area-cont
         overflow hidden
         &.button-list

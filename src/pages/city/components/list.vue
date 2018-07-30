@@ -5,7 +5,7 @@
         <div class="area-title border-topbottom">当前城市</div>
         <div class="area-cont button-list">
           <div class="button-wrapper">
-            <div class="button">{{city}}</div>
+            <div class="button">{{this.city}}</div>
           </div>
         </div>
       </div>
@@ -45,6 +45,8 @@
 </template>
 
 <script>
+  import { mapState, mapMutations } from 'vuex'
+
   export default {
     props: {
       hotCities: Array,
@@ -52,16 +54,14 @@
       letter: String
     },
     computed: {
-      city() {
-        return this.$store.state.city;
-      }
+      ...mapState(['city'])
     },
     methods: {
       handleClickCity(city) {
-        this.$store.commit('changeCity', city);
+        this.changeCity(city);
         this.$router.push('/');
-
-      }
+      },
+      ...mapMutations(['changeCity'])
     },
     mounted() {
       this.scroll = new this.$scroll(this.$refs.wrapper);

@@ -26,6 +26,8 @@
 </template>
 
 <script>
+  import { mapMutations } from 'vuex'
+
   export default {
     props: {
       cities: Object
@@ -46,10 +48,11 @@
     },
     methods: {
       handleClickCity(city) {
-        this.$store.commit('changeCity', city);
+        this.changeCity(city);
         this.$router.push('/');
 
-      }
+      },
+      ...mapMutations(['changeCity'])
     },
     watch: {
       keyword() {

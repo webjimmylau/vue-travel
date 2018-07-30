@@ -27,7 +27,7 @@
       }
     },
     computed: {
-      hasIcons(){
+      hasIcons() {
         return this.list.length;
       },
       iconPages() {
@@ -54,6 +54,7 @@
       width: 20px
       height: 3px
       border-radius: 0
+
   .icons
     background: #fff
     .icon-item

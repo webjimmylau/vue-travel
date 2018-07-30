@@ -8,7 +8,8 @@
       @click="handleClickLetter"
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
-      @touchend="handleTouchEnd">{{item}}</div>
+      @touchend="handleTouchEnd">{{item}}
+    </div>
   </div>
 </template>
 
@@ -17,7 +18,7 @@
     props: {
       cities: Object
     },
-    data(){
+    data() {
       return {
         lettersLen: 0,
         letterFirstHeight: 0,
@@ -27,9 +28,9 @@
       }
     },
     computed: {
-      letters(){
+      letters() {
         const letters = [];
-        for(let i in this.cities){
+        for (let i in this.cities) {
           letters.push(i);
         }
         return letters;
@@ -39,7 +40,7 @@
       this.getBarDefaultInfo();
     },
     methods: {
-      getBarDefaultInfo(){
+      getBarDefaultInfo() {
         let letterFirst = this.letters[0];
         let letterFirstElement = this.$refs[letterFirst][0];
         let barDistanceTop = this.$refs.bar.offsetTop;
@@ -48,28 +49,28 @@
         this.letterFirstHeight = letterFirstElement.clientHeight;
         this.letterFirstDistanceTop = barDistanceTop + letterFirstDistanceBar; // 首字母距离顶部位置
       },
-      handleClickLetter(e){
+      handleClickLetter(e) {
         const letter = e.target.innerText;
         this.$emit('change', letter);
       },
-      handleTouchStart(){
+      handleTouchStart() {
         this.isTouchLetter = true;
       },
-      handleTouchMove(e){
-        if(this.isTouchLetter){
-          if(this.timer) clearTimeout(this.timer); // 性能优化 避免重复执行
-          this.timer = setTimeout(()=>{
+      handleTouchMove(e) {
+        if (this.isTouchLetter) {
+          if (this.timer) clearTimeout(this.timer); // 性能优化 避免重复执行
+          this.timer = setTimeout(() => {
             let touchDistanceTop = e.touches[0].clientY; // 触摸点距离顶部位置
             let touchNum = touchDistanceTop - this.letterFirstDistanceTop; // 触摸点距离首字母位置
             let touchLetterIndex = Math.floor(touchNum / this.letterFirstHeight); // 当前字母下标
-            if(touchLetterIndex >=0 && touchLetterIndex < this.lettersLen){
+            if (touchLetterIndex >= 0 && touchLetterIndex < this.lettersLen) {
               let touchLetter = this.letters[touchLetterIndex]; // 当前字母名称
               this.$emit('change', touchLetter);
             }
           }, 16);
         }
       },
-      handleTouchEnd(){
+      handleTouchEnd() {
         this.isTouchLetter = false
       }
     }

@@ -12,7 +12,7 @@
 </script>
 
 <style lang="stylus" scoped>
-@import '~styles/varibles.styl'
+  @import '~styles/varibles.styl'
   .head
     position: relative
     height: $headHeight

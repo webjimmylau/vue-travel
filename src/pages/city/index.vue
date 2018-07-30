@@ -21,7 +21,7 @@
   import CityBar from './components/bar'
 
   export default {
-    data(){
+    data() {
       return {
         hotCities: [],
         cities: {},
@@ -29,23 +29,23 @@
       }
     },
     methods: {
-      fetchCityInfo(){
+      fetchCityInfo() {
         this.$ajax.get('/api/city.json')
           .then(this.getCityInfo)
       },
-      getCityInfo(res){
+      getCityInfo(res) {
         const resData = res.data;
-        if(resData.ret && resData.data){
+        if (resData.ret && resData.data) {
           const data = resData.data;
-          this.hotCities =  data.hotCities;
-          this.cities =  data.cities;
+          this.hotCities = data.hotCities;
+          this.cities = data.cities;
         }
       },
-      handleChangeLetter(letter){
+      handleChangeLetter(letter) {
         this.letter = letter
       }
     },
-    mounted(){
+    mounted() {
       this.fetchCityInfo();
     },
     components: {

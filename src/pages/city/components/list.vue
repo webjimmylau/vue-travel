@@ -5,7 +5,7 @@
         <div class="area-title border-topbottom">当前城市</div>
         <div class="area-cont button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{city}}</div>
           </div>
         </div>
       </div>
@@ -16,7 +16,10 @@
             class="button-wrapper"
             v-for="item in hotCities"
             :key="item.id">
-            <div class="button">{{item.name}}</div>
+            <div
+              class="button"
+              @click="handleClickCity(item.name)">{{item.name}}
+            </div>
           </div>
         </div>
       </div>
@@ -26,12 +29,15 @@
         :ref="key"
         class="area">
         <div
-          class="area-title border-topbottom">{{key}}</div>
+          class="area-title border-topbottom">{{key}}
+        </div>
         <div class="area-cont item-list">
           <div
             class="item border-bottom"
             v-for="item in list"
-            :key="item.id">{{item.name}}</div>
+            :key="item.id"
+            @click="handleClickCity(item.name)">{{item.name}}
+          </div>
         </div>
       </div>
     </div>
@@ -45,12 +51,24 @@
       cities: Object,
       letter: String
     },
+    computed: {
+      city() {
+        return this.$store.state.city;
+      }
+    },
+    methods: {
+      handleClickCity(city) {
+        this.$store.commit('changeCity', city);
+        this.$router.push('/');
+
+      }
+    },
     mounted() {
-      this.scroll = new this.$scroll(this.$refs.wrapper)
+      this.scroll = new this.$scroll(this.$refs.wrapper);
     },
     watch: {
-      letter(){
-        if(this.letter){
+      letter() {
+        if (this.letter) {
           let element = this.$refs[this.letter][0];
           this.scroll.scrollToElement(element);
         }
@@ -64,9 +82,11 @@
   .border-topbottom
     &:before, &:after
       border-bottom-color: #ddd
+
   .border-bottom
     &:before
       border-bottom-color: #ddd
+
   .list
     position: absolute
     top: 1.6rem

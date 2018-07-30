@@ -24,7 +24,7 @@
       }
     },
     computed: {
-      hasBanner(){
+      hasBanner() {
         return this.list.length;
       }
     }

@@ -12,11 +12,14 @@
       ref="searchCont">
       <div
         class="search-no-data"
-        v-if="hasNoCityData">沒有符合搜索的数据</div>
+        v-if="hasNoCityData">沒有符合搜索的数据
+      </div>
       <div class="search-list" v-else>
         <div
           class="search-item border-bottom"
-          v-for="item in result">{{item.name}}</div>
+          v-for="item in result"
+          @click="handleClickCity(item.name)">{{item.name}}
+        </div>
       </div>
     </div>
   </div>
@@ -27,37 +30,44 @@
     props: {
       cities: Object
     },
-    data(){
+    data() {
       return {
         keyword: '',
         result: []
       }
     },
     computed: {
-      hasKeyword(){
+      hasKeyword() {
         return !!this.keyword.length;
       },
-      hasNoCityData(){
+      hasNoCityData() {
         return !this.result.length;
       }
     },
+    methods: {
+      handleClickCity(city) {
+        this.$store.commit('changeCity', city);
+        this.$router.push('/');
+
+      }
+    },
     watch: {
-      keyword(){
+      keyword() {
         this.result = [];
-        if(!this.keyword.length){
+        if (!this.keyword.length) {
           return;
         }
-        for(let i in this.cities){
-          this.cities[i].forEach((item)=>{
-            if(item.spell.indexOf(this.keyword) > -1 || item.name.indexOf(this.keyword) > -1){
+        for (let i in this.cities) {
+          this.cities[i].forEach((item) => {
+            if (item.spell.indexOf(this.keyword) > -1 || item.name.indexOf(this.keyword) > -1) {
               this.result.push(item);
             }
           })
         }
       }
     },
-    updated(){
-      if(this.$refs.searchCont){
+    updated() {
+      if (this.$refs.searchCont) {
         this.scroll = new this.$scroll(this.$refs.searchCont);
       }
     }

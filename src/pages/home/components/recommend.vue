@@ -31,7 +31,7 @@
       list: Array
     },
     computed: {
-      hasRecommend(){
+      hasRecommend() {
         return this.list.length;
       }
     }

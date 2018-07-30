@@ -26,7 +26,7 @@
       list: Array
     },
     computed: {
-      hasWeekend(){
+      hasWeekend() {
         return this.list.length;
       }
     }

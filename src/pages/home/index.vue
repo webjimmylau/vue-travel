@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <home-head :city="city"></home-head>
+    <home-head></home-head>
     <home-banner :list="bannerList"></home-banner>
     <home-icons :list="iconsList"></home-icons>
     <home-recommend title="热门推荐" :list="recommendList"></home-recommend>
@@ -16,9 +16,8 @@
   import HomeWeekend from './components/weekend'
 
   export default {
-    data(){
+    data() {
       return {
-        city: '',
         bannerList: [],
         iconsList: [],
         recommendList: [],
@@ -26,15 +25,14 @@
       }
     },
     methods: {
-      getDataInfo(){
+      getDataInfo() {
         this.$ajax.get('/api/index.json')
           .then(this.getDataInfoSucc)
       },
-      getDataInfoSucc(res){
+      getDataInfoSucc(res) {
         const resData = res.data;
-        if(resData.ret && resData.data){
+        if (resData.ret && resData.data) {
           const data = resData.data;
-          this.city = data.city;
           this.bannerList = data.bannerList;
           this.iconsList = data.iconList;
           this.recommendList = data.recommendList;

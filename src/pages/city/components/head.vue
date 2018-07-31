@@ -1,7 +1,7 @@
 <template>
   <div class="head">
     <router-link to="/">
-      <span class="iconfont back-icon">&#xe624;</span>
+      <span class="iconfont back-icon">&#xe600;</span>
     </router-link>
     选择城市
   </div>
@@ -18,14 +18,14 @@
     height: $headHeight
     line-height: $headHeight
     text-align center
-    font-size: .36rem
+    font-size: .32rem
     color: #fff
     background: $bgColor
     .back-icon
       position absolute
       top: 0;
       left: 0
-      width: .64rem
-      font-size .4rem
+      width: .6rem
+      font-size .36rem
       color: #fff
 </style>

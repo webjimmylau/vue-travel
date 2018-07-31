@@ -2,7 +2,12 @@
   <div class="recommend" v-if="hasRecommend">
     <div class="recommend-title" v-if="title">{{title}}</div>
     <div class="recommend-cont">
-      <div class="recommend-item" v-for="item in list" :key="item.id">
+      <router-link
+        class="recommend-item"
+        tag="div"
+        v-for="item in list"
+        :key="item.id"
+        :to="'/detail/' + item.id">
         <div class="recommend-img">
           <img :src="item.imgUrl">
         </div>
@@ -19,7 +24,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>

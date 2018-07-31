@@ -15,9 +15,12 @@
   import HomeRecommend from './components/recommend'
   import HomeWeekend from './components/weekend'
 
+  import { mapState } from 'vuex'
+
   export default {
     data() {
       return {
+        lastCity: '',
         bannerList: [],
         iconsList: [],
         recommendList: [],
@@ -26,7 +29,8 @@
     },
     methods: {
       getDataInfo() {
-        this.$ajax.get('/api/index.json')
+        this.lastCity = this.city;
+        this.$ajax.get('/api/index.json?city=' + this.city)
           .then(this.getDataInfoSucc)
       },
       getDataInfoSucc(res) {
@@ -40,7 +44,14 @@
         }
       }
     },
+    computed: {
+      ...mapState(['city'])
+    },
     mounted() {
+      this.getDataInfo();
+    },
+    activated(){
+      if(this.lastCity == this.city) return;
       this.getDataInfo();
     },
     components: {

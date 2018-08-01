@@ -55,6 +55,7 @@
     left: 0
     color: #fff
     background: #000
+    z-index: 99
     .swiper-slide
       display: flex
       align-items: center

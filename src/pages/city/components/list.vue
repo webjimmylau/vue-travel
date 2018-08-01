@@ -79,13 +79,6 @@
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
-  .border-topbottom
-    &:before, &:after
-      border-bottom-color: #ddd
-
-  .border-bottom
-    &:before
-      border-bottom-color: #ddd
 
   .list
     position: absolute

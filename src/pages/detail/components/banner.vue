@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <common-gallery :show="isShowGallery" @change="handleChange"></common-gallery>
+    <common-gallery :show="isShowGallery" @close="handleClose"></common-gallery>
   </div>
 </template>
 
@@ -28,9 +28,8 @@
       handleClick(){
         this.isShowGallery = true;
       },
-      handleChange(val){
-        console.log(val)
-        this.isShowGallery = val;
+      handleClose(){
+        this.isShowGallery = false;
       }
     },
     components: {

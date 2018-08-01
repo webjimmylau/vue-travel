@@ -39,7 +39,7 @@
     },
     methods: {
       handleChangeClick(){
-        this.$emit('change', !this.show);
+        this.$emit('close');
       }
     }
   }

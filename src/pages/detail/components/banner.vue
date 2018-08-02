@@ -12,12 +12,16 @@
         </div>
       </div>
     </div>
-    <common-gallery :list="data.gallaryImgs" :show="isShowGallery" @close="handleClose"></common-gallery>
+    <common-fade>
+      <common-gallery v-if="isShowGallery" :list="data.gallaryImgs" @close="handleClose"></common-gallery>
+    </common-fade>
   </div>
 </template>
 
 <script>
   import CommonGallery from 'common/gallery'
+  import CommonFade from 'common/fade'
+
   export default {
     props: {
       data: Object
@@ -41,7 +45,8 @@
       }
     },
     components: {
-      CommonGallery
+      CommonGallery,
+      CommonFade
     }
   }
 </script>

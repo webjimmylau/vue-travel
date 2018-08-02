@@ -11,7 +11,6 @@
     name: 'App',
     data(){
       return {
-
         exclude: ['Detail']
       }
     }

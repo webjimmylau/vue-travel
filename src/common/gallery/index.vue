@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery" v-if="show" @click="handleChangeClick">
+  <div class="gallery" @click="handleChangeClick">
     <swiper :options="swiperOption">
       <swiper-slide v-for="(item, index) in list" :key="index">
         <img class="swiper-img" :src="item">
@@ -13,7 +13,6 @@
   export default {
     props: {
       list: Array,
-      show: Boolean
     },
     data() {
       return {

@@ -1,8 +1,8 @@
 <template>
   <div class="detail">
     <detail-head></detail-head>
-    <detail-banner></detail-banner>
-    <detail-ticket :list="ticketData"></detail-ticket>
+    <detail-banner :data="bannerData"></detail-banner>
+    <detail-ticket :list="categoryList"></detail-ticket>
     <div class="detail-cont"></div>
   </div>
 </template>
@@ -13,15 +13,41 @@
   import DetailTicket from './components/ticket'
 
   export default {
+    name: 'Detail',
     data(){
       return {
-        ticketData: [
-          {title: '成人票', children: [{title: '1人', children: [{title: '1人'}, {title: '2人'}, {title: '3人'}]}, {title: '2人'}, {title: '3人'}]},
-          {title: '学生票', children: [{title: '1人'}, {title: '2人'}, {title: '3人'}]},
-          {title: '儿童票', children: [{title: '1人'}, {title: '2人'}, {title: '3人'}]},
-          {title: '特惠票', children: [{title: '1人'}, {title: '2人'}, {title: '3人'}]},
-        ]
+        bannerData: {
+          sightName: '',
+          bannerImg: '',
+          commentsNum: '',
+          gallaryImgs: []
+        },
+        categoryList: []
       }
+    },
+    methods: {
+      getDetailInfo(){
+        this.$ajax
+          .get('/api/detail.json', {
+            params: {
+              id: this.$route.params.id
+            }
+          })
+          .then((res)=>{
+            const resData = res.data;
+            if(resData.ret && resData.data){
+              const data = resData.data;
+              this.bannerData.sightName = data.sightName;
+              this.bannerData.bannerImg = data.bannerImg;
+              this.bannerData.gallaryImgs = data.gallaryImgs;
+              this.categoryList = data.categoryList;
+            }
+          })
+
+      }
+    },
+    mounted(){
+      this.getDetailInfo();
     },
     components: {
       DetailHead,

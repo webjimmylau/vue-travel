@@ -2,26 +2,34 @@
   <div class="banner">
     <div class="banner-cont" @click="handleClick">
       <div class="banner-img">
-        <img src="http://img1.qunarzz.com/sight/p0/1807/77/77570cc3ebf7d9d8a3.img.jpg_600x330_ca3cdd3a.jpg">
+        <img :src="data.bannerImg">
       </div>
       <div class="banner-info">
-        <div class="banner-title">长鹿休闲度假农庄(AAAAA景区)</div>
+        <div class="banner-title">{{data.sightName}}</div>
         <div class="banner-num">
           <span class="iconfont icon-img">&#xe716;</span>
-          <span>82</span>
+          <span>{{gallaryImgsLen}}</span>
         </div>
       </div>
     </div>
-    <common-gallery :show="isShowGallery" @close="handleClose"></common-gallery>
+    <common-gallery :list="data.gallaryImgs" :show="isShowGallery" @close="handleClose"></common-gallery>
   </div>
 </template>
 
 <script>
   import CommonGallery from 'common/gallery'
   export default {
+    props: {
+      data: Object
+    },
     data(){
       return {
         isShowGallery: false
+      }
+    },
+    computed: {
+      gallaryImgsLen(){
+        return this.data.gallaryImgs.length;
       }
     },
     methods: {

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <keep-alive :exclude="exclude">
       <router-view/>
     </keep-alive>
   </div>
@@ -8,7 +8,13 @@
 
 <script>
   export default {
-    name: 'App'
+    name: 'App',
+    data(){
+      return {
+
+        exclude: ['Detail']
+      }
+    }
   }
 </script>
 

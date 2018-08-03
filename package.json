@@ -5,12 +5,13 @@
   "author": "webjimmylau <web_jimmy_lau@126.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --host 0.0.0.0 --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "better-scroll": "^1.12.5",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
@@ -43,7 +44,6 @@
     "portfinder": "^1.0.13",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
-    "postcss-url": "^7.2.1",
     "postcss-url": "^7.2.1",
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
